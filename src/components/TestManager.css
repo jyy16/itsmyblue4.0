@@ -1,0 +1,487 @@
+.test-container {
+  height: 100dvh;  /* 关键：设置固定高度 */
+  box-sizing: border-box; /* 关键修复 */
+  overflow-y: auto; /* 添加垂直滚动 */
+}
+  
+
+  .welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 改为顶部对齐 */
+    z-index: 1000;
+    overflow-y: auto; /* 添加垂直滚动 */
+    padding: 20px 0; /* 添加上下内边距 */
+  }
+  
+  .welcome-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    max-width: 680px;
+    margin: 20px;
+    max-height: none; /* 移除最大高度限制 */
+  }
+  
+  h3 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #4a90e2;
+    display: inline-block;
+    margin-top: 0 !important;
+  }
+  
+  .preface-section {
+    margin-bottom: 2rem;
+  }
+  
+  .preface-section p {
+    line-height: 1.8;
+    color: #495057;
+    font-size: 1rem;
+    text-align: justify;
+  }
+  
+  .instruction-section {
+    margin: 2rem 0;
+  }
+  
+  .subsection {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+    border-left: 3px solid #4a90e2;
+  }
+  
+  h4 {
+    color: #343a40;
+    font-size: 1.2rem;
+    margin: 0.8rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  h4::before {
+    display: inline-block;
+    font-size: 1.3em;
+    margin-right: 0.5rem;
+  }
+  
+  .subsection p {
+    color: #6c757d;
+    line-height: 1.7;
+    margin-left: 2rem;
+    font-size: 0.95rem;
+  }
+  
+  .start-button {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0.3rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 2rem auto 0;
+  }
+  
+  .start-button:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+  }
+  
+  .icon {
+    font-weight: bold;
+    font-size: 1.4rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .start-button:hover .icon {
+    transform: translateX(3px);
+  }
+  
+  @media (max-width: 768px) {
+    .welcome-content {
+      padding: 1.5rem;
+      margin: 10px;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+    }
+    
+    .subsection {
+      padding-left: 1rem;
+    }
+    
+    .subsection p {
+      margin-left: 1rem;
+    }
+  }  
+/* 转换界面style */
+.transition-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* 改为顶部对齐 */
+  z-index: 2000;
+  color: #000000; 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-y: auto; /* 添加垂直滚动 */
+  padding: 20px 0; /* 添加上下内边距 */
+}
+
+.transition-content {
+  background: rgba(255, 255, 255, 0.95); /* 白色半透明背景 */
+  padding: 3rem;
+  border-radius: 25px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1); /* 更柔和的阴影 */
+  max-width: 600px;
+  text-align: center; /* 内容居中 */
+  animation: float 3s ease-in-out infinite;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* 添加细边框 */
+  margin: 20px auto; /* 添加上下外边距 */
+}
+
+.loader {
+  position: relative;
+  margin: 0 auto 3rem;
+  width: 140px;
+  height: 140px;
+}
+
+.circle-border {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    #4a90e2 0% 25%,
+    #63d471 25% 50%,
+    #ffd700 50% 75%,
+    #9370db 75% 100%
+  );
+  animation: rotate 2s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1)); /* 调整阴影颜色 */
+}
+
+.circle-core {
+  position: absolute;
+  width: 82%;
+  height: 82%;
+  background: #f0f0f0; /* 浅灰色背景 */
+  border-radius: 50%;
+  top: 9%;
+  left: 9%;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05); /* 更柔和的内部阴影 */
+}
+
+/* 状态信息样式 */
+.status-message {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 2rem 0;
+  color: #333333 !important; /* 深灰色文字 */
+  line-height: 1.5;
+}
+
+.highlight {
+  color: #2d2d2d !important; /* 强调文字使用更深的黑色 */
+  font-weight: 700;
+}
+
+/* 倒计时样式 */
+.countdown-display {
+  margin: 2.5rem 0;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center; /* 倒计时内容居中 */
+}
+
+.countdown-number {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #2d2d2d !important; /* 深黑色数字 */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 更柔和的阴影 */
+}
+
+.countdown-label {
+  color: #666666 !important; /* 深灰色辅助文字 */
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+/* 动画定义 */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(-1deg); 
+  }
+  50% { 
+    transform: translateY(-12px) rotate(1deg); 
+  }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { 
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% { 
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% { 
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
+
+@keyframes dotBlink {
+  0% { 
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  50% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% { 
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .transition-content {
+    padding: 2rem;
+    margin: 1.5rem;
+    border-radius: 20px;
+  }
+
+  .loader {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 2rem;
+  }
+
+  .status-message {
+    font-size: 1.2rem;
+    margin: 1.5rem 0;
+  }
+
+  .countdown-number {
+    font-size: 3.2rem;
+  }
+
+  .countdown-label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .transition-content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .status-message {
+    font-size: 1.1rem;
+  }
+
+  .countdown-number {
+    font-size: 2.8rem;
+  }
+}
+
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .transition-content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .countdown-number {
+    font-size: 2.5rem;
+  }
+  
+  .status-message {
+    font-size: 1rem;
+  }
+}
+
+
+
+.complete-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* 改为顶部对齐 */
+  z-index: 1000;
+  overflow-y: auto;  /* 启用垂直滚动 */
+  padding: 20px;     /* 内容边距 */
+  box-sizing: border-box; /* 包含padding在高度内 */
+}
+
+
+
+.complete-content{
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: 20px auto; /* 添加上下外边距并居中 */
+}
+
+
+
+
+/* 信息收集表单 */
+.info-form-section {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s ease-out;
+}
+
+.form-group {
+  margin: 1.5rem 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #2d2d2d;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 添加移动设备的响应式调整 */
+@media (max-width: 768px) {
+  .welcome-content,
+  .transition-content,
+  .complete-content {
+    padding: 1.5rem;
+    margin: 10px;
+    width: calc(100% - 20px); /* 确保宽度适应屏幕 */
+  }
+  
+  .info-form-section {
+    padding: 1.5rem;
+    margin: 1rem auto;
+    width: calc(100% - 20px); /* 确保宽度适应屏幕 */
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  .subsection {
+    padding-left: 1rem;
+  }
+  
+  .subsection p {
+    margin-left: 1rem;
+  }
+  
+  .form-group {
+    margin: 1rem 0;
+  }
+  
+  .radio-group {
+    flex-direction: column; /* 在小屏幕上垂直排列单选按钮 */
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-content,
+  .transition-content,
+  .complete-content,
+  .info-form-section {
+    padding: 1rem;
+    margin: 5px;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+  }
+  
+  .form-input {
+    padding: 0.6rem;
+  }
+}

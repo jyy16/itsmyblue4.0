@@ -1,0 +1,42 @@
+{
+  "name": "ismyblue",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "start:server": "node server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.1",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "d3": "^7.9.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "faunadb": "^4.8.0",
+    "fs-extra": "^11.3.0",
+    "vue": "^3.4.29",
+    "vue-confetti": "^2.3.0",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@types/node": "^22.15.2",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "postcss": "^8.4.41",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.9",
+    "vite": "^6.3.3",
+    "vite-plugin-vue-devtools": "^7.3.1"
+  }
+}
