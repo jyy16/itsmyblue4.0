@@ -19,15 +19,3 @@ npm run dev
 ```sh
 npm run build
 ```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
-
-### Deploy
-
-```sh
-netlify deploy --prod
-```
