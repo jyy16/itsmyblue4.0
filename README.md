@@ -1,4 +1,4 @@
-# A psychological test for the influence of authoritive judgement (disguised as a color test)
+# A psychological test for the influence of authoritative judgement (disguised as a color test)
 
 This project is heavily adopted from https://github.com/patrickmineault/ismyblue
 
