@@ -19,3 +19,8 @@ npm run dev
 ```sh
 npm run build
 ```
+### Start the service
+
+```sh
+node server.cjs
+```
